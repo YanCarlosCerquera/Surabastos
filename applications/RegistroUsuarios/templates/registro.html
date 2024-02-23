@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Cuenta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registro.css' %}">
+</head>
+<body>
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row justify-content-center">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img src="{% static 'images/registro_cuentas.png' %}" alt="" class="img img-fluid" style="width: 180px;">
+                    <h2 class="card-title"><b>Para crear tu cuenta solo te pediremos algunos datos</b></h2>
+                    <p class="card-text">(solo te tomará unos minutos)</p>
+                    <!-- Checkbox para aceptar términos y condiciones -->
+                    <div class="form-check checkbox-container">
+                        <input type="checkbox" class="form-check-input" id="accept_terms" required>
+                        <label class="form-check-label" for="accept_terms">
+                            Acepto todos los términos y condiciones y autorizo el uso de mis datos de acuerdo a la Declaración de Privacidad
+                        </label>
+                    </div>
+    
+                    <!-- Botones para crear cuenta -->
+                    <div class="personal">
+                        <button type="button" class="btn btn-primary" onclick="crearCuenta('personal')">Crear Cuenta Personal</button>
+                    </div>
+                    <div class="empresa">
+                        <button type="button" class="btn btn-secondary" onclick="crearCuenta('empresa')">Crear Cuenta Empresa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        function crearCuenta(tipo) {
+            if (document.getElementById('accept_terms').checked) {
+                if (tipo === 'personal') {
+                    // Redirigir a la página de registro de cuenta personal
+                    window.location.href = "{% url 'paso1' %}";  //'registro_usuario_normal'
+                } else if (tipo === 'empresa') {
+                    // Redirigir a la página de registro de cuenta de empresa
+                    window.location.href = "{% url 'pasoEm1' %}";
+                }
+            } else {
+                alert("Es obligatorio aceptar los términos y condiciones.");
+            }
+        }
+    </script>
+</body>
+</html>

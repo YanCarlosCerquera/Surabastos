@@ -1,0 +1,53 @@
+body {
+    text-align: center;
+    font-family: "Inter",sans-serif;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.h2, h2 {
+    font-size: 1.2rem;
+}
+
+.card{
+    border-radius: 30px;
+    border-color: yellowgreen;
+    border-width: 2px;
+    padding: 20px;
+    width: auto;
+    max-width: 480px;
+}
+
+
+
+.checkbox-container {
+    text-align: left;
+    margin-top: 10px;
+}
+.checkbox-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+.checkbox-container input {
+    margin-right: 20px;
+}
+
+.personal{
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.btn-primary{
+    background-color: greenyellow;
+    width: 60%;
+    border-color: greenyellow;
+    color: blue;
+}
+
+.btn-secondary{
+    background-color: greenyellow;
+    border-color: greenyellow;
+    width: 60%;
+    color: blue;
+}

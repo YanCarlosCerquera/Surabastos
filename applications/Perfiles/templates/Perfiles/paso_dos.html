@@ -1,0 +1,51 @@
+{% extends 'Perfiles/base_perfil.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-5">
+    <div class="container-fluid mt-5">
+        <div class="img-fluid text-center">
+            <img src="{% static 'images/Imagen_form_productos.png' %}" alt="Logo" width="60%" height="auto">
+        </div>
+
+        <div class="card-body border-0 m-5">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="frutas">
+                            <input type="radio" id="frutas" name="categoria" value="1" onclick="setCategoria(1)">
+                            <img src="{% static 'images/frutas.png' %}" alt="1" width="100%" height="auto">
+                        </label>
+                    </div>    
+                    <div class="col-6">
+                        <label for="verduras">
+                            <input type="radio" id="verduras" name="categoria" value="0" onclick="setCategoria(0)">
+                            <img src="{% static 'images/verduras.png' %}" alt="0" width="100%" height="auto">
+                        </label>
+                    </div>
+                </div>
+                <input type="hidden" id="id_categoria" name="categoria">
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-5">Siguiente</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setCategoria(categoria) {
+        document.getElementById("id_categoria").value = categoria;
+    }
+
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        if (document.getElementById('id_categoria').value !== '') {
+            document.querySelector('form').submit();
+        }
+    });
+</script>
+{% endblock %}

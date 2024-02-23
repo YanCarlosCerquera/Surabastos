@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/panel_usuario.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-0">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/logo-potencia-vida.png' %}" alt="Logo" width="300" height="80">
+    </a>
+    
+    <div class="navbar-items-utils" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link " href="{% url 'blog:home' %}">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'blog:shop' %}">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  item-hidden" href="{% url 'blog:shop' %}">Compras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  item-hidden" href="{% url 'blog:shop' %}">Ventas</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user" style="margin-right: 10px;"></i>
+            {{ user.username }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Perfil</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container-fluid aside">
+    <div class="row">
+      <nav class="sidebar">
+        <div class="tituloCuenta">
+          <h4>Mi Cuenta</h4>
+        </div>
+        <ul>
+          <li class="nav-item2">
+            <a href="#" class="btnAside btn-custom1">
+              <i class="fas fa-shopping-cart i-custom" style="margin-right: 30px;"></i>Compras
+            </a>
+          </li>
+          <li class="nav-item2">
+            <a href="{% url 'paso_uno' %}" class="btnAside btn-custom2">
+              <i class="fa-solid fa-tags" style="margin-right: 30px;"></i>Ventas  
+            </a>
+          </li>
+          <li class="nav-item2">
+            <a href="{% url 'mi_perfil' %}" class="btnAside btn-custom3">
+              <i class="fa-solid fa-user-tie" style="margin-right: 30px;"></i>Mi Perfil
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="content">
+        {% block content %}
+        <!-- Contenido específico de la página -->
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

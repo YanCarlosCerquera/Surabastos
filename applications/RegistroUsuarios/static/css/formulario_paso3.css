@@ -1,0 +1,37 @@
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; 
+    width: 90vh;
+}
+
+.card {
+    border-color: rgba(148, 144, 144, 0.626) !important;
+    width: 100%;
+    max-width: 1000px; 
+    padding: 70px; 
+    border-radius: 20px !important;
+}
+
+.btn-primary{
+    margin-top: 30px;
+    width: 100%;
+    background-color: rgb(111, 189, 34) !important;
+    border-color:  rgb(112, 206, 18) !important ;
+    margin-bottom: 30px;
+    height: 50px;
+}
+
+input{
+    width: 100%;
+    border-radius: 10px;
+    border-color: rgb(182, 176, 176);
+    border-width: 1px;
+    text-align: left;
+    padding: 10px;
+    height: 50px;
+    margin-bottom: 30px !important;
+    max-width: 100vh;
+}
+

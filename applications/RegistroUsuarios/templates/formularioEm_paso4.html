@@ -1,0 +1,35 @@
+{% extends 'Reg_Natural_base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>Crear Usuario Persona Natural</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/formulario_paso4.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<div class="container-fluid d-flex rounded-20">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card border-custom text-center shadow ">
+                <h5 class="font-weight-bold text-left mt-3">Ingresa tu contraseña</h5>
+                <p class="text-secondary text-left mt-2 mb-0">Crea una contraseña segura.</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <p class="text-secondary text-left mt-2 mb-0">Contraseña</p>
+                    {{ form.password1 }} <br>
+                    <p class="text-secondary text-left mt-2 mb-0">Confirmación</p>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                    <button type="submit" class="btn btn-primary mt-3" name="submit">Continuar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'Perfiles/base_perfil.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<head>
+    <title>Ventas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/panel_usuario.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+</head>
+
+<div class="container-fluid m-5">
+    <div class="img-fluid text-center">
+        <img src="{% static 'images/Imagen_form_productos.png' %}" alt="Logo" width="60%" height="auto">
+    </div>
+    <div class="card border-0">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-10">
+                        <div class="mb-3 m-5 select-ciudad"> 
+                            <h5 class="text-left">Complete la información sobre su artículo</h5>
+                            <label for="id_nombre" class="form-label mt-2"><h5>Titulo</h5></label><br>
+                            {{ form.nombre | as_crispy_field }}
+                        </div> 
+                        <div class="mb-3 m-5 select-ciudad"> 
+                            <label for="id_nombre" class="form-label"><h5>Descripción</h5></label><br>
+                            {{ form.descripcion | as_crispy_field }}
+                        </div>
+                    </div>
+                <div class="row rowable">   
+                    <div class="col-2 rowable">
+                        <div class="mb-3 m-5 select-ciudad"> 
+                            <label for="id_nombre" class="form-label mt-5"><h5>Ciudad</h5></label><br>
+                            {{ form.ciudad }}
+                        </div>
+                        <div class="mb-3 m-5 select-ciudad"> 
+                            <label for="id_nombre" class="form-label mt-5"><h5>Precio</h5></label><br>
+                            {{ form.precio }}
+                        </div>
+                    </div> 
+                </div>       
+                </div> 
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary next-btn"> Siguiente </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

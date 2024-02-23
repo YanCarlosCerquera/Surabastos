@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bienvenido</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container-fluid centered-container">
+    <div class="row align-items-center align-content-lg-center justify-content-center mt-5 mb-5 border shadow">
+        <div class="col-md-6 align-content-center" >
+            <div class="card border-0"> 
+                <div class="card-body">
+                    <h2 class="card-title">Bienvenido</h2>
+
+                    <div class="alert text-center font-weight-bold mt-0">
+                        <h8>{{ mensaje_advertencia }}</h8>
+                    </div>
+                    
+
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.username.label_tag }}<br><br>{{ form.username }}
+                        <br><br>
+                        {{ form.password.label_tag }}<br><br>{{ form.password }}
+                        <br><br>
+                        <button type="submit" class="btn btn-primary rounded-pill"><b>Ingresar</b></button>
+                            
+                        <div class="inferior">
+                            <a href="#"">¿Olvidaste tu contraseña? </a><br>
+                            ¿No tienes una cuenta? <a href="{% url 'registro' %}" class="btn btn-link">Regístrate</a>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 align-content-center mt-5 mb-5">
+            <div class="card border-0 ">
+                <img src="{% static 'images/v1_24.jpg' %}" alt="" class="img img-fluid" style="height: 84.9vh; width: 80vh;">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

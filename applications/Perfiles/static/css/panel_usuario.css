@@ -1,0 +1,231 @@
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgb(132, 203, 26);
+  border-radius: 10px;
+}
+
+.logo {
+  width: 300px;
+  height: 80px;
+}
+
+.btn-custom3 {
+  background-color: white !important;
+  color: rgb(82, 85, 83) !important;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+}
+
+.btn-custom2 {
+  background-color: white !important;
+  color: rgb(41, 6, 236) !important;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+}
+
+.btn-custom1 {
+  background-color: white !important;
+  color: rgb(231, 97, 14) !important;
+  font-weight: bolder;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: left !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  font-weight: bold !important;
+  border-radius: 10px !important;
+  margin-top: 50px;
+  transition: 1s ease;
+}
+
+
+
+.sidebar {
+  height: 90vh;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgb(255, 120, 45, 1) 100%);
+  height: auto;
+  min-width: 10em;
+  width: 20%;
+  min-height: 90vh !important;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all .3s ease;
+}
+
+.sidebar:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar .tituloCuenta {
+  margin-bottom: 4em;
+  margin-top: 2em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.nav-item2 {
+  list-style-type: none;
+  margin-bottom: 3em !important;
+  transform: scale(1.1);
+}
+
+.navbar-expand-lg {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item a,
+.nav-item li {
+  text-decoration: none !important;
+}
+
+.navbar-items-utils {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: absolute;
+  right: 0px;
+}
+
+.sidebar .btnAside {
+  padding: 1em;
+  transition: .5s ease;
+  border: solid 1px transparent;
+  position: relative;
+  left: -1em;
+}
+
+.btnAside:hover {
+  border: solid #54861f 1px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .nav-item {
+  width: 100%;
+}
+
+.sidebar .nav-item .btn-custom {
+  width: 100%;
+  text-align: left;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  color: black !important;
+}
+
+h4 {
+  margin-right: 30%;
+  color: #fff !important;
+  margin-top: 20px !important;
+  margin-bottom: 0% !important;
+  font-size: 28px !important;
+}
+
+.content {
+  width: 80% !important;
+}
+.btn {
+  border: none !important;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2) !important;
+  margin-bottom: 2em;
+  transition: .3s ease !important;
+}
+
+.btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/* perfiles estilos 2 */
+.item-hidden {
+  display: none !important;
+}
+
+.titulo {
+  display: flex;
+}
+
+.list-items-perfil {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  flex-wrap: wrap;
+}
+
+.list-items-perfil li {
+  list-style-type: none;
+  gap: 1em !important;
+  padding: 1em;
+  width: 30%;
+  margin: 1em;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+.select-ciudad select {
+  padding: .5em;
+  outline: none;
+}
+
+.select-ciudad input,
+.select-ciudad textarea {
+  padding: .5em;
+  outline: none;
+  resize: none;
+}
+
+.rowable {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.next-btn {
+  padding: 1em !important;
+  width: 25% !important;
+  min-width: 6em;
+}
+
+.tituloCuenta {
+  font-weight: 400;
+  font-family: 'Arial', Courier, monospace;
+}
+
+@media (max-width: 1000px) {
+  .item-hidden {
+    display: block !important;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1em;
+  }
+  .content {
+    width: 100% !important;
+  }
+  .list-items-perfil li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

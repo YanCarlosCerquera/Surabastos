@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Solicitudes de Creación de Usuarios</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/mostrar_solicitudes.css' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+   <!-- Navbar -->
+   <nav class="navbar navbar-expand-lg navbar-light bg-light  shadow mb-4">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/Logo_surabastos.png' %}" alt="Logo" class="logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <span class="nav-link username">{{ user.username }}</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+
+  <div class="container mb-2 mt-5">
+
+    <h2 class="text-center">Solicitudes de Creación de Usuarios</h2>
+
+    <div class="d-flex mt-5 mb-4">
+      <div class="card col-5 mr-5 border-0">
+        <div class="card-body">
+          <p class="card-text ">Solicitudes Pendientes de Aceptar: <br>  <span class="custom-number">{{ solicitudes_pendientes }}</span></p>
+        </div>
+      </div>
+    
+      <div class="card col-5 mt-custom border-0">
+        <div class="card-body">
+          <p class="card-text">Solicitudes Aceptadas: <br> <span class="custom-number">{{ solicitudes_aceptadas }} </span> </p>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-borderless table-hover custom-table">
+      <thead class="">
+        <tr>
+          <th>No.</th>
+          <th>Usuario</th>
+          <th>Fecha de Solicitud</th>
+          <th>Correo Electronico</th>
+          <th style="margin-left: 100px;">Solicitud</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for solicitud in solicitudes %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ solicitud.username }}</td>
+          <td>{{ solicitud.fecha_creacion}}</td>
+          <td>{{ solicitud.email }}</td>
+          <td>
+            <a href="{% url 'aceptar_solicitud' solicitud.id %}">
+              <i class="fas fa-check-circle fa-lg" style="color: green; font-size: 28px;margin-right: 15  px; margin-left: 10px;"></i>
+            </a>
+            <a href="{% url 'eliminar_solicitud' solicitud.id %}">
+              <i class="fa-solid fa-trash fa-lg" style="color: red; font-size: 28px; margin-left: 25px;"></i>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

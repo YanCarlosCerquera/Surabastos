@@ -1,0 +1,108 @@
+{% extends 'Perfiles/base_perfil.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Ventas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'css/panel_usuario.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/paso_tres.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card border-0">
+            <div class="card-body border-0">
+                <h2 class="card-title">Carga las imágenes de tu producto</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    <div class="row" id="imageContainer">
+                        {% for form in formset %}
+                            <div class="col-6 mb-3">
+                                {{ form.as_p }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Aqui va lo que habia planteado para una mejor carga -->
+    <!-- html -->
+    <!-- <div class="container mt-5">
+        <div class="card">
+            <div class="card-body border-0">
+                <h2 class="card-title">Carga las imágenes de tu producto</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ formset.management_form }}
+                    <div class="row" id="imageContainer">
+                        <div id="image-inputs">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="addImageBtn" class="btn btn-secondary">Agregar Imagen</button>
+                </form>
+            </div>
+        </div>
+    </div> -->
+    <!-- esto que comento es para hacer una carga de imagenes mas limpia - esta terminado -->
+    <!-- <script>
+        $(document).ready(function () {
+            function addImageField() {
+                var container = $("#image-inputs");
+                var newField = '<div class="col-md-6 mb-3">' +
+                    '<img src="" id="previewImage"  style="max-width: 100%">' +
+                    '<input type="file" name="image" class="form-control-file">' +
+                    '</div>';
+                container.append(newField);
+
+                // Find the newly added input and attach the change event
+                var newInput = container.find('input[name="image"]').last();
+                newInput.on('change', function () {
+                    var imgElement = $(this).closest('.col-md-6').find('img')[0];
+                    if (this.files && this.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            imgElement.src = e.target.result;
+                            newInput.hide(); // Hide the input after loading the image
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                });
+            }
+
+
+            // Manejar el evento click en el botón de agregar imagen
+            $("#addImageBtn").on("click", function (e) {
+                e.preventDefault();
+                addImageField();
+            });
+
+            // Función para previsualizar la imagen seleccionada
+            $(document).on('change', 'input[name="image"]', function () {
+                var imgElement = $(this).closest('.col-md-6').find('img')[0];
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        imgElement.src = e.target.result;
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        });
+    </script> -->
+
+</body>
+</html>
+{% endblock %}
+

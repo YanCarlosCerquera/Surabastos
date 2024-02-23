@@ -1,0 +1,43 @@
+{% extends 'Reg_Natural_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Crear Usuario Persona Natural</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/formulario_paso4.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<div class="container-fluid d-flex rounded-20">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card border-custom text-center shadow ">
+                <div class="d-flex justify-content-center">
+                    <img src="{% static 'images/cuentacreada.png' %}" alt="" class="img img-fluid"
+                        style="width: 180px;">
+                </div>
+                <h5 class="font-weight-bold text-center mt-3">Tu cuenta ha sido creada</h5>
+                <p class="text-secondary text-center mt-2 mb-0">El administrador evaluara tu solicitud</p>
+                <button class="btn-primary" onclick="redirectLogin()" name="submit" id="myButton" type="button">Iniciar
+                    Sesión</button>
+
+                <script>
+                    function redirectLogin() {
+                        window.location.href = 'http://127.0.0.1:8000/';
+                    }
+
+                    document.getElementById('myButton').addEventListener('click', function () {
+                        // Muestra la alerta al hacer clic en el botón
+                        $('#myAlert').slideDown();
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

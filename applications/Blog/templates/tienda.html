@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tienda.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head> 
+<div class="container c4">
+    <div class="row">
+        <div class="col-12 col-lg-3 lateral">
+            <!-- Panel lateral izquierdo para filtros -->
+            <h5>Productos Orgánicos Frescos</h5>
+            <h6>Acerca de 5.000 resultados</h6>
+            <div class="aside-filtros">
+                <h6>Filtrar por:</h6>
+                <form method="get" action="{% url 'blog:tienda' %}">
+                    <label for="ciudad">Ciudad:</label>
+                        <select name="ciudad" id="ciudad" class="campoTexto select ">
+                            <option value="">Todas las ciudades</option>
+                            {% for ciudad in ciudades_huila %}
+                                <option value="{{ ciudad }}" {% if ciudad_seleccionada == ciudad %} selected {% endif %}>{{ ciudad }}</option>
+                            {% endfor %}
+                        </select>
+                    
+
+                        <div class="form-group">
+                            <label for="precio_min">Precio mínimo:</label>
+                            <input type="number" placeholder="0" class="form-control campoTexto" id="precio_min" name="precio_min" value="{{ request.GET.precio_min }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="precio_max">Precio máximo:</label>
+                            <input type="number"  placeholder="0" class="form-control campoTexto" id="precio_max" name="precio_max" value="{{ request.GET.precio_max }}">
+                        </div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                            const precioMin = document.getElementById("precio_min");
+                            const precioMax = document.getElementById("precio_max");
+                            const precioMinLabel = document.getElementById("precio_min_label");
+                            const precioMaxLabel = document.getElementById("precio_max_label");
+                            const rangoPrecio = document.getElementById("rango_precio");
+
+                            if (precioMin && precioMax && precioMinLabel && precioMaxLabel && rangoPrecio) {
+                                precioMin.addEventListener("input", () => {
+                                    precioMinLabel.textContent = precioMin.value;
+                                    rangoPrecio.value = precioMin.value;
+                                });
+
+                                precioMax.addEventListener("input", () => {
+                                    precioMaxLabel.textContent = precioMax.value;
+                                    rangoPrecio.value = precioMax.value;
+                                });
+
+                            } else {
+                                console.log("Alguno de los elementos no ha sido encontrado en el DOM");
+                            }
+                        });
+
+                        </script>
+                        <hr>
+                        <div class="btnFiltros">
+                            <button type="submit" class="btn btn-primary " style="margin-top: 20px;">Filtrar</button>
+                            <a href="{% url 'blog:tienda' %}" class="btn btn-primary mt-2">Quitar filtros</a>
+                        </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="seccion2">
+            <!-- Barra de navegación para organizar por página, ordenar por y búsqueda -->
+            <div class="navbar">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="perPageDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Por página
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="perPageDropdown">
+                        <a class="dropdown-item" href="?per_page=5">5</a>
+                        <a class="dropdown-item" href="?per_page=10">10</a>
+                        <a class="dropdown-item" href="?per_page=15">15</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="orderByDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ordenar por
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="orderByDropdown">
+                        <a class="dropdown-item" href="?order_by=fecha_asc">Fecha ascendente</a>
+                        <a class="dropdown-item" href="?order_by=fecha_desc">Fecha descendente</a>
+                        <a class="dropdown-item" href="?order_by=nombre_asc">Nombre ascendente</a>
+                        <a class="dropdown-item" href="?order_by=nombre_desc">Nombre descendente</a>
+                        <a class="dropdown-item" href="?order_by=ciudad_asc">Ciudad ascendente</a>
+                        <a class="dropdown-item" href="?order_by=ciudad_desc">Ciudad descendente</a>
+                    </div>
+                </div>                
+    
+                <div class="search">
+                    <form method="get" action="{% url 'blog:tienda' %}">
+                        <input type="text" class="buscar" name="q" placeholder="Buscar productos" value="{{ request.GET.q }}">
+                        <button type="submit" class="icono-search">
+                            <i class="fas fa-search"></i> <!-- Icono de búsqueda -->
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <!-- Lista de productos -->
+            <div class="products">
+                <div class="row pro-c1">
+                    {% for producto in productos %}
+                        <div class="product-container" id="product-container">
+                            <a href="{% url 'blog:info_productos' producto_id=producto.id %}">
+                                <img src="{{producto.imagenes.first.imagen.url  }}" alt="{{ producto.nombre }}" class="product-image">
+                            </a>
+                            <h3 class="nombre">{{ producto.nombre }}</h3>
+                            <div class="product-details">
+                                <p>Ciudad: {{ producto.ciudad }}</p>
+                                <p>Precio: {{ producto.precio }}</p>
+                                <p>Descripción: {{ producto.descripcion }}</p>
+                                 <div class="utilidadesP">
+                                    <a href="{% url 'blog:info_productos' producto_id=producto.id %}"><i class="bi bi-search"></i></a>
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <span class="step-links">
+                    {% if productos.has_previous %}
+                        <a href="?page=1">&laquo; Primera</a>
+                        <a href="?page={{ productos.previous_page_number }}">anterior</a>
+                    {% endif %}
+                    <span class="current">
+                        Página {{ productos.number }} de {{ productos.paginator.num_pages }}.
+                    </span>
+
+                    {% if productos.has_next %}
+                        <a href="?page={{ productos.next_page_number }}">siguiente</a>
+                        <a href="?page={{ productos.paginator.num_pages }}">última &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const orderByDropdown = document.getElementById("orderByDropdown");
+    
+        orderByDropdown.addEventListener("change", function() {
+            this.form.submit(); 
+        });
+    });
+</script>
+    
+{% endblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

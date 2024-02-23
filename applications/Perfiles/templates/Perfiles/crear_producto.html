@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/panel_usuario.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow mb-0">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/Logo_surabastos.png' %}" alt="Logo" width="300" height="80">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'blog:home' %}">Inicio <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Productos</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user" style="margin-right: 10px;"></i>
+                {{ user.username }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Perfil</a>
+                <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse">
+                      <span class="navbar-toggler-icon" style="color: black;"></span>
+                    </button>
+                    <h4>Mi Cuenta</h4>
+                  </div>
+                  <a href="#" class="btn btn-secondary btn-custom1">
+                    <i class="fas fa-shopping-cart i-custom" style="margin-right: 30px;"></i>Compras
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'panel_usuario' %}" class="btn btn-secondary btn-custom2">
+                    <i class="fa-solid fa-tags" style="margin-right: 30px;"></i>Ventas
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'mi_perfil' %}" class="btn btn-secondary btn-custom3">
+                    <i class="fa-solid fa-user-tie" style="margin-right: 30px;"></i>Mi Perfil
+                </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+      
+
+    {% block content %}
+    <!-- Contenido específico de la página -->
+    {% endblock %}
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+.mt-custom {
+    margin-left: 6.7rem; 
+}
+
+
+.card-body{
+    justify-content: center;
+    text-align: center;
+    color: #11742d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.username {
+    font-weight: bold;
+  }
+
+.custom-number {
+  text-align: center;
+  font-size: 60px; 
+  color: rgb(72, 95, 209); 
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  }
+
+
+.logo {
+    width: 300px; 
+    height: 80px;
+  }
+
+thead th {
+  color: rgb(72, 95, 209); 
+  font-family: 'Arial', sans-serif; 
+  }
+
+.custom-table thead {
+  box-shadow: 0 4px 2px -1px rgba(25, 24, 24, 0.475);
+  }
+  
+
+tbody tr {
+  margin-bottom: 20px; 
+  }

@@ -1,0 +1,33 @@
+{% extends 'Perfiles/base_perfil.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+    <title>Ventas</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/panel_usuario.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+</head>
+
+<div class="container-fluid m-5">
+    <div class="img-fluid text-center mb-3">
+        <img src="{% static 'images/imagen3.png' %}" alt="Logo" width="60%" height="auto">
+    </div>
+    
+    <div class="card border-0">
+        <div class="img-fluid text-center">
+            <img src="{% static 'images/Publicacion_exitosa.png' %}" alt="Logo" width="50%" height="auto">
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <button type="submit" class="btn btn-primary">Ver tu anuncio</button>
+</div>
+
+
+{% endblock %}

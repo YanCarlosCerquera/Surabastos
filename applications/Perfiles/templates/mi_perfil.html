@@ -1,0 +1,21 @@
+{% extends 'Perfiles/base_perfil.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Contenido específico de la página -->
+    <div class="container mt-5">
+        <div class="card border-0">
+            <div class="card-body border-0">
+                <h2 class="titulo">Mi Perfil</h2>
+                <p class="subtitulo">Información de usuario:</p>
+                <ul class="list-group border-0 list-items-perfil">
+                    <li>Nombre: <p>{{ user.username}}</p></li>
+                    <li>Correo Electrónico: <p>{{ user.email }}</p></li>
+                    <li>Celular: <p>{{ user.cell }}</p></li>
+                    <li>Ubicación: <p>{{ ciudad }}</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Otro contenido relacionado con el perfil -->
+{% endblock %}
